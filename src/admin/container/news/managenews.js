@@ -5,8 +5,8 @@ import Navbar from "../../components/Navbar";
 import axios from "axios";
 import { Link, Redirect } from "react-router-dom";
 
-export default function User() {
-  const [users, setUser] = useState([]);
+export default function ManageNews() {
+  const [news, setUser] = useState([]);
 
   useEffect(() => {
     loadUsers();
@@ -25,7 +25,7 @@ export default function User() {
   };
 
   const loadUsers = async () => {
-    const result = await axios.get("http://localhost:2020/show/users");
+    const result = await axios.get("http://localhost:2020/show/news");
     console.log(result);
     const { success, data } = result;
     if (data.success) {
@@ -52,40 +52,32 @@ export default function User() {
       <div class="container">
         <div style={{ padding: 50 }}>
           <div>
-            <h2>User </h2>
+            <h2>News </h2>
 
             <table class="table border shadow">
               <thead class="thead-light">
                 <tr>
                   <th scope="col">#</th>
-                  <th scope="col">First Name</th>
-                  <th scope="col">Last Name</th>
-                  <th scope="col">Email</th>
+                  <th scope="col">Title</th>
+                  <th scope="col">Content</th>
 
                   <th>Action</th>
+                  <th scope="col">
+                    {" "}
+                    <Link class="btn btn-success">Add</Link>
+                  </th>
                 </tr>
               </thead>
               <tbody>
-                {users.map((user, index) => (
+                {news.map((news, index) => (
                   <tr>
                     <th scope="row">{index + 1}</th>
-                    <td>{user.fname}</td>
-                    <td>{user.lname}</td>
-                    <td>{user.email}</td>
+                    <td>{news.title}</td>
+                    <td>{news.content.substr(0, 75)}</td>
 
                     <td>
-                      <Link
-                        class="btn btn-outline-primary mr-2"
-                        to={"/user/update/" + user._id}
-                      >
-                        Edit
-                      </Link>
-                      <Link
-                        class="btn btn-danger"
-                        onClick={deleteProduct.bind(this, user._id)}
-                      >
-                        Delete
-                      </Link>
+                      <Link class="btn btn-outline-primary mr-2">Edit</Link>
+                      <Link class="btn btn-danger">Delete</Link>
                     </td>
                   </tr>
                 ))}

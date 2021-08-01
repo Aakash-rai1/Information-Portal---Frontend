@@ -5,7 +5,7 @@ import Navbar from "../../components/Navbar";
 import axios from "axios";
 import { Link, Redirect } from "react-router-dom";
 
-export default function User() {
+export default function ManageAdmin() {
   const [users, setUser] = useState([]);
 
   useEffect(() => {
@@ -25,7 +25,7 @@ export default function User() {
   };
 
   const loadUsers = async () => {
-    const result = await axios.get("http://localhost:2020/show/users");
+    const result = await axios.get("http://localhost:2020/show/admins");
     console.log(result);
     const { success, data } = result;
     if (data.success) {
@@ -52,7 +52,7 @@ export default function User() {
       <div class="container">
         <div style={{ padding: 50 }}>
           <div>
-            <h2>User </h2>
+            <h2>Manage Admin </h2>
 
             <table class="table border shadow">
               <thead class="thead-light">

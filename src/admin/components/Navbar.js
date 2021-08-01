@@ -42,7 +42,7 @@ class Navbar extends Component {
               </Link>
             </li>
             <li class="has-subnav">
-              <Link to="/admin/admin">
+              <Link to="/admin/updateAdmin">
                 <i class="fa fa-hamburger fa-2x" style={mystyle}></i>
                 <span class="nav-text">Manage Admins</span>
               </Link>
