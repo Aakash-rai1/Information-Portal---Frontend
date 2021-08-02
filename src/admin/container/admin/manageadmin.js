@@ -5,6 +5,9 @@ import Navbar from "../../components/Navbar";
 import axios from "axios";
 import { Link, Redirect } from "react-router-dom";
 
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 export default function ManageAdmin() {
   const [users, setUser] = useState([]);
 
@@ -14,9 +17,9 @@ export default function ManageAdmin() {
 
   const deleteProduct = (id) => {
     axios
-      .delete("http://localhost:2020/delete/user/" + id)
+      .delete("http://localhost:2020/delete/admin/" + id)
       .then((response) => {
-        console.log(response);
+        toast.success("Admin Deleted", { position: "bottom-right" });
       })
       .catch((err) => {
         console.log(err.response);
@@ -53,7 +56,11 @@ export default function ManageAdmin() {
         <div style={{ padding: 50 }}>
           <div>
             <h2>Manage Admin </h2>
+            <br />
 
+            <Link class="btn btn-success" to="/admin/addadmin">
+              Add Admin
+            </Link>
             <table class="table border shadow">
               <thead class="thead-light">
                 <tr>
@@ -91,6 +98,7 @@ export default function ManageAdmin() {
                 ))}
               </tbody>
             </table>
+            <ToastContainer />
           </div>
         </div>
       </div>

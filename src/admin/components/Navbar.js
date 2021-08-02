@@ -36,27 +36,33 @@ class Navbar extends Component {
         <nav class="main-menu">
           <ul>
             <li class="has-subnav">
-              <Link to="/admin/updateUser">
+              <Link to="/admin/manageUser">
                 <i class="fa fa-book fa-2x" style={mystyle}></i>
                 <span class="nav-text">Manage Users</span>
               </Link>
             </li>
             <li class="has-subnav">
-              <Link to="/admin/updateAdmin">
+              <Link to="/admin/manageAdmin">
                 <i class="fa fa-hamburger fa-2x" style={mystyle}></i>
                 <span class="nav-text">Manage Admins</span>
               </Link>
             </li>
             <li class="has-subnav">
-              <Link to="/admin/news">
+              <Link to="/admin/manageNews">
                 <i class="fa fa-users fa-2x" style={mystyle}></i>
                 <span class="nav-text">Manage News</span>
               </Link>
             </li>
             <li>
-              <Link to="/admin/events">
+              <Link to="/admin/manageEvents">
                 <i class="fa fa-table fa-2x" style={mystyle}></i>
                 <span class="nav-text">Manage Events</span>
+              </Link>
+            </li>
+            <li>
+              <Link to="/admin/manageResults">
+                <i class="fa fa-table fa-2x" style={mystyle}></i>
+                <span class="nav-text">Manage Results</span>
               </Link>
             </li>
             <li>
@@ -64,13 +70,6 @@ class Navbar extends Component {
                 <i class="fa fa-id-card fa-2x" style={mystyle}></i>
 
                 <span class="nav-text">Manage Notice</span>
-              </Link>
-            </li>
-            <li>
-              <Link to="/admin/add">
-                <i class="fa fa-id-card fa-2x" style={mystyle}></i>
-
-                <span class="nav-text">Add Admin</span>
               </Link>
             </li>
 

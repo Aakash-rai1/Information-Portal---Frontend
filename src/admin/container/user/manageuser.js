@@ -8,8 +8,8 @@ import { Link, Redirect } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-export default function ManageNews() {
-  const [news, setUser] = useState([]);
+export default function User() {
+  const [users, setUser] = useState([]);
 
   useEffect(() => {
     loadUsers();
@@ -17,9 +17,9 @@ export default function ManageNews() {
 
   const deleteProduct = (id) => {
     axios
-      .delete("http://localhost:2020/delete/news/" + id)
+      .delete("http://localhost:2020/delete/user/" + id)
       .then((response) => {
-        toast.success("News Deleted Successfully", {
+        toast.success("User Deleted Successfully!!", {
           position: "bottom-right",
         });
       })
@@ -30,7 +30,7 @@ export default function ManageNews() {
   };
 
   const loadUsers = async () => {
-    const result = await axios.get("http://localhost:2020/show/news");
+    const result = await axios.get("http://localhost:2020/show/users");
     console.log(result);
     const { success, data } = result;
     if (data.success) {
@@ -57,34 +57,37 @@ export default function ManageNews() {
       <div class="container">
         <div style={{ padding: 50 }}>
           <div>
-            <h2>News </h2>
+            <h2>User </h2>
             <br />
-
-            <Link class="btn btn-success" to="/admin/addNews">
-              Add News
-            </Link>
             <table class="table border shadow">
               <thead class="thead-light">
                 <tr>
                   <th scope="col">#</th>
-                  <th scope="col">Title</th>
-                  <th scope="col">Content</th>
+                  <th scope="col">First Name</th>
+                  <th scope="col">Last Name</th>
+                  <th scope="col">Email</th>
 
                   <th>Action</th>
                 </tr>
               </thead>
               <tbody>
-                {news.map((news, index) => (
+                {users.map((user, index) => (
                   <tr>
                     <th scope="row">{index + 1}</th>
-                    <td>{news.title.substr(0, 15)}</td>
-                    <td>{news.content.substr(0, 75)}</td>
+                    <td>{user.fname}</td>
+                    <td>{user.lname}</td>
+                    <td>{user.email}</td>
 
                     <td>
-                      <Link class="btn btn-outline-primary mr-2">Edit</Link>
+                      <Link
+                        class="btn btn-outline-primary mr-2"
+                        to={"/user/update/" + user._id}
+                      >
+                        Edit
+                      </Link>
                       <Link
                         class="btn btn-danger"
-                        onClick={deleteProduct.bind(this, news._id)}
+                        onClick={deleteProduct.bind(this, user._id)}
                       >
                         Delete
                       </Link>

@@ -1,9 +1,19 @@
+import React from "react";
+import Avatar from "@material-ui/core/Avatar";
+import Button from "@material-ui/core/Button";
+import TextField from "@material-ui/core/TextField";
+import Checkbox from "@material-ui/core/Checkbox";
+import Typography from "@material-ui/core/Typography";
+import Container from "@material-ui/core/Container";
 import { Component } from "react";
-import Navbar from "../../components/Navbar";
+import { Link, Redirect } from "react-router-dom";
 import axios from "axios";
-
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
+import Navbar from "../../components/Navbar";
+
+const Note = { fontSize: "10px", margin: "5px 0 0 0" };
 
 class AdminAdd extends Component {
   constructor() {
@@ -47,96 +57,90 @@ class AdminAdd extends Component {
       })
 
       .catch((err) => {
-        toast.error("User with the email already exists", {
+        toast.error("Admin with the email already exists", {
           position: "bottom-right",
         });
       });
 
     this.setState({ fname: "", lname: "", email: "", password: "" });
   };
-
   render() {
     return (
-      <div>
+      <Container component="main" maxWidth="xs">
         <Navbar />
 
-        {/* <Paper elevation={10} style={paperStyle}></Paper> */}
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-3 col-md-2"></div>
-            <div class="col-lg-6 col-md-8 login-box">
-              <div class="col-lg-12 login-key">
-                <i class="fa fa-book" aria-hidden="true"></i>
-              </div>
-              <div class="col-lg-12 login-title">Add Admin</div>
-
-              <div class="col-lg-12 login-form">
-                <div class="col-lg-12 login-form">
-                  <form>
-                    <div class="form-group">
-                      <label class="form-control-label">First Name</label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        name="fname"
-                        value={this.state.fname}
-                        onChange={this.changeHandler}
-                      />
-                    </div>
-                    <div class="form-group">
-                      <label class="form-control-label">Last Name</label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        name="lname"
-                        value={this.state.lname}
-                        onChange={this.changeHandler}
-                      />
-                    </div>
-                    <div class="form-group">
-                      <label class="form-control-label">Email Address</label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        name="email"
-                        value={this.state.email}
-                        onChange={this.changeHandler}
-                      />
-                    </div>
-
-                    <div class="form-group">
-                      <label class="form-control-label">Password</label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        name="password"
-                        value={this.state.password}
-                        onChange={this.changeHandler}
-                      />
-                    </div>
-
-                    <div class="col-lg-12 loginbttm">
-                      <div class="col-lg-8 login-btm login-button">
-                        {/* <button type="submit" class="btn btn-outline-primary" onClick={this.AdminLogin}>LOGIN</button> */}
-                        <a
-                          href="/admindetails"
-                          class="btn btn-outline-primary"
-                          style={{ alignContent: "center" }}
-                          onClick={this.AddAdminData}
-                        >
-                          Add
-                        </a>
-                      </div>
-                    </div>
-                  </form>
-                  <ToastContainer />
-                </div>
-              </div>
-            </div>
-          </div>
+        <div className="paper">
+          <Typography component="h1" variant="h5">
+            Add Admin
+          </Typography>
+          <form className="form" noValidate>
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              id="fname"
+              label="First Name"
+              name="fname"
+              autoComplete="fname"
+              autoFocus
+              value={this.state.fname}
+              onChange={this.changeHandler}
+            />
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              id="lname"
+              label="Last Name"
+              name="lname"
+              autoComplete="lname"
+              autoFocus
+              value={this.state.lname}
+              onChange={this.changeHandler}
+            />
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              id="email"
+              label="Email Address"
+              name="email"
+              autoComplete="email"
+              autoFocus
+              name="email"
+              value={this.state.email}
+              onChange={this.changeHandler}
+            />
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              name="password"
+              label="Password"
+              type="password"
+              id="password"
+              autoComplete="current-password"
+              value={this.state.password}
+              onChange={this.changeHandler}
+            />
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              className="submit"
+              onClick={this.AddAdminData}
+            >
+              Add Admin
+            </Button>
+            <ToastContainer />
+          </form>
         </div>
-        {/* <Paper/> */}
-      </div>
+      </Container>
     );
   }
 }

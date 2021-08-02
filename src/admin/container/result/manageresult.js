@@ -9,7 +9,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export default function ManageNews() {
-  const [news, setUser] = useState([]);
+  const [users, setUser] = useState([]);
 
   useEffect(() => {
     loadUsers();
@@ -30,7 +30,7 @@ export default function ManageNews() {
   };
 
   const loadUsers = async () => {
-    const result = await axios.get("http://localhost:2020/show/news");
+    const result = await axios.get("http://localhost:2020/show/users");
     console.log(result);
     const { success, data } = result;
     if (data.success) {
@@ -57,34 +57,30 @@ export default function ManageNews() {
       <div class="container">
         <div style={{ padding: 50 }}>
           <div>
-            <h2>News </h2>
+            <h2>Results </h2>
             <br />
-
-            <Link class="btn btn-success" to="/admin/addNews">
-              Add News
-            </Link>
             <table class="table border shadow">
               <thead class="thead-light">
                 <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Title</th>
-                  <th scope="col">Content</th>
+                  <th scope="col">S.N</th>
+                  <th scope="col">Student Name</th>
+                  <th scope="col">Email</th>
 
                   <th>Action</th>
                 </tr>
               </thead>
               <tbody>
-                {news.map((news, index) => (
+                {users.map((users, index) => (
                   <tr>
                     <th scope="row">{index + 1}</th>
-                    <td>{news.title.substr(0, 15)}</td>
-                    <td>{news.content.substr(0, 75)}</td>
+                    <td>{users.fname + users.lname}</td>
+                    <td>{users.email}</td>
 
                     <td>
                       <Link class="btn btn-outline-primary mr-2">Edit</Link>
                       <Link
                         class="btn btn-danger"
-                        onClick={deleteProduct.bind(this, news._id)}
+                        onClick={deleteProduct.bind(this, users._id)}
                       >
                         Delete
                       </Link>
