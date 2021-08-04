@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function AddNews() {
+export default function AddEvents() {
   const classes = useStyles();
   const [value, setValue] = React.useState("Controlled");
 
@@ -57,14 +57,15 @@ export default function AddNews() {
       <Grid item xs={12} sm={12} md={12} component={Paper} elevation={2} square>
         <div className={classes.paper}>
           <Typography component="h1" variant="h5">
-            News
+            Add Events
           </Typography>
           <form className={classes.form}>
             <TextField
+              xs={12}
               id="filled-full-width"
-              label="Title"
+              label="Event Title"
               style={{ margin: 8 }}
-              placeholder="Enter Your Title"
+              placeholder="Enter Your Event Title"
               helperText="Title must not be empty"
               fullWidth
               margin="normal"
@@ -76,6 +77,7 @@ export default function AddNews() {
             />
 
             <TextField
+              xs={12}
               variant="outlined"
               margin="normal"
               required

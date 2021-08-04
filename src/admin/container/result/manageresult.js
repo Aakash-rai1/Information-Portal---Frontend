@@ -17,9 +17,9 @@ export default function ManageNews() {
 
   const deleteProduct = (id) => {
     axios
-      .delete("http://localhost:2020/delete/news/" + id)
+      .delete("http://localhost:2020/delete/result/" + id)
       .then((response) => {
-        toast.success("News Deleted Successfully", {
+        toast.success("Result Deleted Successfully", {
           position: "bottom-right",
         });
       })
@@ -73,7 +73,9 @@ export default function ManageNews() {
                 {users.map((users, index) => (
                   <tr>
                     <th scope="row">{index + 1}</th>
-                    <td>{users.fname + users.lname}</td>
+                    <td>
+                      {users.fname} {users.lname}
+                    </td>
                     <td>{users.email}</td>
 
                     <td>
@@ -83,6 +85,9 @@ export default function ManageNews() {
                         onClick={deleteProduct.bind(this, users._id)}
                       >
                         Delete
+                      </Link>
+                      <Link class="btn btn-success" to="/admin/addresult">
+                        Add
                       </Link>
                     </td>
                   </tr>

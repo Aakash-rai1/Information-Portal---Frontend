@@ -1,9 +1,20 @@
 import React from "react";
 import { Link, Redirect } from "react-router-dom";
 // import { SidebarData } from './SidebarData';
-// import './Navbar.css';
+import "./sidebar.css";
+import { makeStyles } from "@material-ui/core/styles";
+
 import axios from "axios";
 import { Component } from "react";
+
+const styles = makeStyles(() => ({
+  head: {
+    fontSize: 20,
+  },
+  fa: {
+    vericalAlign: "middle",
+  },
+}));
 
 const token = {
   headers: { Authorization: `Bearer ${localStorage.getItem("userToken")}` },
@@ -65,13 +76,6 @@ class Navbar extends Component {
                 <span class="nav-text">Manage Results</span>
               </Link>
             </li>
-            <li>
-              <Link to="/admin/notice">
-                <i class="fa fa-id-card fa-2x" style={mystyle}></i>
-
-                <span class="nav-text">Manage Notice</span>
-              </Link>
-            </li>
 
             <li>
               <Link to="/admin/profile">
@@ -86,7 +90,9 @@ class Navbar extends Component {
             <li>
               <a onClick={logout}>
                 <i class="fa fa-power-off fa-2x" style={mystyle}></i>
-                <span class="nav-text">Logout</span>
+                <span class="nav-text" style={{ color: "white" }}>
+                  Logout
+                </span>
               </a>
             </li>
           </ul>

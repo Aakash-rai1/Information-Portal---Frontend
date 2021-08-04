@@ -60,7 +60,7 @@ export default function ManageEvents() {
             <h2>Events </h2>
             <br />
 
-            <Link class="btn btn-success" to="/admin/add">
+            <Link class="btn btn-success" to="/admin/addEvents">
               Add Events
             </Link>
             <table class="table border shadow">

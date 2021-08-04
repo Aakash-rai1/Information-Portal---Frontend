@@ -62,7 +62,7 @@ class Login extends Component {
           <Avatar className="avatar">
             <LockOutlinedIcon />
           </Avatar>
-          <Typography component="h1" variant="h5">
+          <Typography component="h1" variant="h5" textAlign="center">
             Admin Login
           </Typography>
           <form className="form" noValidate>
