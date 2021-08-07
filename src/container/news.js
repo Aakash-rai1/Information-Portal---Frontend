@@ -15,8 +15,14 @@ const useStyles = makeStyles((theme) => ({
     margin: 30,
     alignItems: "center",
   },
+  header: {
+    margin: "auto",
+    fontSize: 30,
+    padding: 10,
+    margin: 20,
+  },
   root: {
-    maxWidth: 335,
+    maxWidth: 345,
   },
   media: {
     height: 0,
@@ -48,7 +54,10 @@ export default function News() {
     <div>
       <Header />
       <div className={classes.container}>
-        <Grid container spacing={3}>
+        <div className={classes.header}>
+          <h1>News & Announcements</h1>
+        </div>
+        <Grid container spacing={3} justifyContent="center">
           <Grid item xs={12} sm={6} md={4}>
             <Card className={classes.root}>
               <CardActionArea>
