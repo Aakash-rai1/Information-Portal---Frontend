@@ -232,6 +232,17 @@ img {
   }
 }
 
+.read-more-link {
+  color: blueviolet;
+  text-decoration: underline;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+.extra-content {
+  color: cornflowerblue;
+  font-weight: 500;
+}
+
 #aa-header {
   display: inline;
   float: left;
@@ -5644,7 +5655,6 @@ img {
   box-shadow: none;
 }
 
-
 @media (max-width: 1199px) {
   .aa-product-catg {
     margin-left: -45px;
@@ -5675,7 +5685,11 @@ img {
     line-height: 50px;
   }
 
-  #aa-product-category .aa-product-catg-content .aa-product-catg-body .aa-product-catg li {
+  #aa-product-category
+    .aa-product-catg-content
+    .aa-product-catg-body
+    .aa-product-catg
+    li {
     width: 29.2%;
   }
 
@@ -5732,7 +5746,11 @@ img {
     width: 90%;
   }
 
-  #aa-product-category .aa-product-catg-content .aa-product-catg-body .aa-product-catg li {
+  #aa-product-category
+    .aa-product-catg-content
+    .aa-product-catg-body
+    .aa-product-catg
+    li {
     width: 44%;
   }
 
@@ -5744,29 +5762,65 @@ img {
     padding: 3.5% 0;
   }
 
-  #aa-product-category .aa-product-catg-content .aa-product-catg-body .list li figure .aa-product-descrip {
+  #aa-product-category
+    .aa-product-catg-content
+    .aa-product-catg-body
+    .list
+    li
+    figure
+    .aa-product-descrip {
     padding-right: 20px;
   }
 
-  #aa-product-category .aa-product-catg-content .aa-product-catg-body .list li figure .aa-product-img {
+  #aa-product-category
+    .aa-product-catg-content
+    .aa-product-catg-body
+    .list
+    li
+    figure
+    .aa-product-img {
     margin-right: 20px;
     width: 42%;
   }
-  #aa-product-category .aa-product-catg-content .aa-product-catg-body .list li figure .aa-product-img img {
+  #aa-product-category
+    .aa-product-catg-content
+    .aa-product-catg-body
+    .list
+    li
+    figure
+    .aa-product-img
+    img {
     max-width: 100%;
   }
 
-  #aa-product-category .aa-product-catg-content .aa-product-catg-body .list li figure .aa-product-descrip {
+  #aa-product-category
+    .aa-product-catg-content
+    .aa-product-catg-body
+    .list
+    li
+    figure
+    .aa-product-descrip {
     padding-right: 25px;
     font-size: 15px;
   }
 
-  #aa-product-category .aa-product-catg-content .aa-product-catg-body .list li figure .aa-add-card-btn {
+  #aa-product-category
+    .aa-product-catg-content
+    .aa-product-catg-body
+    .list
+    li
+    figure
+    .aa-add-card-btn {
     bottom: 20%;
     left: 46%;
   }
 
-  #aa-product-category .aa-product-catg-content .aa-product-catg-body .list li .aa-product-hvr-content {
+  #aa-product-category
+    .aa-product-catg-content
+    .aa-product-catg-body
+    .list
+    li
+    .aa-product-hvr-content {
     width: 42%;
   }
 
@@ -5775,10 +5829,15 @@ img {
     width: 100%;
   }
 
-  .aa-product-details-content .aa-product-view-slider .simpleLens-big-image-container {
+  .aa-product-details-content
+    .aa-product-view-slider
+    .simpleLens-big-image-container {
     width: 100%;
   }
-  .aa-product-details-content .aa-product-view-slider .simpleLens-big-image-container .simpleLens-lens-image {
+  .aa-product-details-content
+    .aa-product-view-slider
+    .simpleLens-big-image-container
+    .simpleLens-lens-image {
     width: 100%;
   }
 
