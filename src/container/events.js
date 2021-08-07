@@ -7,7 +7,7 @@ class Events extends Component {
     return (
       <>
         <Header />
-        <div>this is Events</div>
+        <div>hello kimsu</div>
         <div>this is Events</div>
         <div>this is Events</div>
         <div>this is Events</div>
