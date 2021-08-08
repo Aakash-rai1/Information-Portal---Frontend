@@ -7,6 +7,7 @@ import Typography from "@material-ui/core/Typography";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import axios from "axios";
+import { Grid } from "@material-ui/core";
 
 const useStyles = makeStyles(() => ({
   container: {
@@ -83,24 +84,44 @@ export default function Newscard() {
   const classes = useStyles();
 
   return (
-    <Card className={classes.root}>
+    <>
       {news.map((news, index) => (
-        <CardActionArea>
-          <CardContent>
-            <Typography variant="h5" component="h2">
-              {news.title}
-            </Typography>
-            <CardMedia
-              className={classes.media}
-              image="/static/images/cards/paella.jpg"
-              title="Paella dish"
-            />
-            <Typography variant="body2" color="textSecondary" component="p">
+        <div class="col-md-4">
+          <div class="card ">
+            <div class="card-body">
+              <h5 class="card-title"> {news.title}</h5>
+              <img
+                class="card-img"
+                src={`http://localhost:2020/image/post/${news.image}`}
+                alt="Card image"
+              />
               <ReadMore>{news.content}</ReadMore>
-            </Typography>
-          </CardContent>
-        </CardActionArea>
+            </div>
+          </div>
+        </div>
       ))}
-    </Card>
+    </>
+
+    // <Grid item>
+    //   <Card className={classes.root}>
+    //     {news.map((news, index) => (
+    //       <CardActionArea>
+    //         <CardContent>
+    //           <Typography variant="h5" component="h2">
+    //             {news.title}
+    //           </Typography>
+    //           <CardMedia
+    //             className={classes.media}
+    //             image={`http://localhost:2020/image/post/${news.image}`}
+    //             title="Paella dish"
+    //           />
+    //           <Typography variant="body2" color="textSecondary" component="p">
+    //             <ReadMore>{news.content}</ReadMore>
+    //           </Typography>
+    //         </CardContent>
+    //       </CardActionArea>
+    //     ))}
+    //   </Card>
+    // </Grid>
   );
 }

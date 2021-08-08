@@ -15,6 +15,7 @@ const useStyles = makeStyles(() => ({
     paddingLeft: "40px",
     paddingRight: "40px",
   },
+
   header: {
     margin: "auto",
     fontSize: "20px",
@@ -35,17 +36,8 @@ export default function News() {
           <h3>News & Announcements</h3>
         </div>
 
-        <div>
-          <Grid
-            container
-            spacing={3}
-            className={classes.gridcontainer}
-            justify="center"
-          >
-            <Grid item xs={12} sm={6} md={4}>
-              <Newscard />
-            </Grid>
-          </Grid>
+        <div class="row">
+          <Newscard />
         </div>
       </div>
       <Footer />
