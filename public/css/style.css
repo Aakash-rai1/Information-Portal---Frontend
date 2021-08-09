@@ -5854,3 +5854,8 @@ img {
     margin-top: 30px;
   }
 }
+
+.card-img-top {
+  max-height: 40px;
+  height: 40px;
+}

@@ -61,20 +61,20 @@ const ReadMore = ({ children }) => {
   );
 };
 
-export default function Newscard() {
-  const [news, setnews] = useState([]);
+export default function Eventscard() {
+  const [events, setevents] = useState([]);
 
   useEffect(() => {
     loadNews();
   }, []);
 
   const loadNews = async () => {
-    const result = await axios.get("http://localhost:2020/show/news");
+    const result = await axios.get("http://localhost:2020/show/events");
     console.log(result);
     const { success, data } = result;
     if (data.success) {
       console.log("cos", data);
-      setnews(data.data);
+      setevents(data.data);
     } else {
       if (data.message == "Unauthorized access!!") {
         console.log();
@@ -86,18 +86,15 @@ export default function Newscard() {
 
   return (
     <>
-      {news.map((news, index) => (
+      {events.map((events, index) => (
         <div class="col-md-4">
           <div class="card ">
-            <img
-              class="card-img-top"
-              src={`http://localhost:2020/image/post/${news.image}`}
-              alt="Card image"
-              style={{ maxHeight: "250px", width: "100%", objectFit: "cover" }}
-            />
+            <div class="card-header">Date: {events.date}</div>
             <div class="card-body">
-              <h5 class="card-title"> {news.title}</h5>
-              <ReadMore>{news.content}</ReadMore>
+              <h5 class="card-title"> {events.title}</h5>
+              <h6 class="card-subtitle mb-2 text-muted">{events.location}</h6>
+              <hr />
+              <ReadMore>{events.content}</ReadMore>
             </div>
           </div>
         </div>
