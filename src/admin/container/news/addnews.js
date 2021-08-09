@@ -3,11 +3,13 @@ import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
 import Navbar from "../../components/Navbar";
+import axios from "axios";
 
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
+
 const useStyles = makeStyles((theme) => ({
   root: {
     height: "auto",
@@ -44,6 +46,21 @@ const useStyles = makeStyles((theme) => ({
 export default function AddNews() {
   const classes = useStyles();
   const [value, setValue] = React.useState("Controlled");
+
+  // const sendprofilepic = () => {
+  //   let formdata = new FormData();
+  //   formdata.append("image", this.state.profileimage[0]);
+  //   console.log(this.state.profileimage[0]);
+  //   axios
+  //     .put(
+  //       "http://localhost:2020/admin/addnews" + this.state.user._id,
+  //       formdata,
+  //       this.state.config
+  //     )
+  //     .then(function () {
+  //       window.location.reload();
+  //     });
+  // };
 
   const handleChange = (event) => {
     setValue(event.target.value);
@@ -88,6 +105,17 @@ export default function AddNews() {
               rows={8}
               autoComplete="email"
               autoFocus
+            />
+
+            <div>Image</div>
+
+            <input
+              className="form-control"
+              type="file"
+              onChange={(event) =>
+                this.setState({ profileimage: event.target.files })
+              }
+              placeholder="Upload Image"
             />
 
             <Button
