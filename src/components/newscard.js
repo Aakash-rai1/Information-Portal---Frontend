@@ -45,18 +45,20 @@ const ReadMore = ({ children }) => {
   };
   return (
     <p className="text">
-      {isReadMore ? text.slice(0, 45) : text}
-      <span onClick={toggleReadMore} className="read-or-hide">
+      {text.length > 44 && isReadMore ? text.slice(0, 45) : text}
+      <div onClick={toggleReadMore} className="read-or-hide">
         {isReadMore ? (
           <Button variant="contained" color="primary">
             read more
           </Button>
         ) : (
-          <Button variant="contained" color="secondary">
-            show less
-          </Button>
+          text.length > 44 && (
+            <Button variant="contained" color="secondary">
+              show less
+            </Button>
+          )
         )}
-      </span>
+      </div>
     </p>
   );
 };
