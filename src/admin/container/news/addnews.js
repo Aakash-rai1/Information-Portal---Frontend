@@ -46,7 +46,47 @@ const useStyles = makeStyles((theme) => ({
 export default function AddNews() {
   const classes = useStyles();
   const [value, setValue] = React.useState("Controlled");
+  const [image, setImage] = React.useState("");
+  const [content, setContent] = React.useState("");
+  const [title, setTitle] = React.useState("");
 
+  const fileHandler = (e) => {
+    setImage(e.target.files[0]);
+  };
+  const inputHandler = (e) => {
+    // this.setState({
+    //     [e.target.name] : e.target.value
+    // })
+  };
+
+  console.log(title);
+  // const addnews = () => {
+  //   var axios = require("axios");
+  //   var FormData = require("form-data");
+  //   var fs = require("fs");
+  //   var data = new FormData();
+  //   data.append("title", title);
+  //   data.append("content", content);
+
+  //   var config = {
+  //     method: "post",
+  //     url: "http://localhost:2020/admin/addnews",
+  //     headers: {
+  //       ...data.getHeaders(),
+  //     },
+  //     data: data,
+  //   };
+
+  //   data.append("image", fs.createReadStream(image));
+  //   axios(config)
+  //     .then(function (response) {
+  //       console.log(JSON.stringify(response.data));
+  //     })
+  //     .catch(function (error) {
+  //       console.log(error);
+  //     });
+  // };
+  // console.log(image);
   // const sendprofilepic = () => {
   //   let formdata = new FormData();
   //   formdata.append("image", this.state.profileimage[0]);
@@ -64,6 +104,24 @@ export default function AddNews() {
 
   const handleChange = (event) => {
     setValue(event.target.value);
+  };
+
+  const addNews = (e) => {
+    // e.preventDefault();
+    const data = new FormData();
+    data.append("title", title);
+    data.append("content", content);
+    data.append("image", image);
+
+    axios
+      .post("http://localhost:2020/admin/addnews", data)
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((err) => {
+        console.log(err.response);
+      });
+    console.log(data);
   };
 
   return (
@@ -84,12 +142,14 @@ export default function AddNews() {
               placeholder="Enter Your Title"
               helperText="Title must not be empty"
               fullWidth
+              name="title"
               margin="normal"
               InputLabelProps={{
                 shrink: true,
               }}
               variant="filled"
               required
+              onChange={(text) => setTitle(text.target.value)}
             />
 
             <TextField
@@ -97,14 +157,16 @@ export default function AddNews() {
               margin="normal"
               required
               multiline
-              defaultValue="Write your content here.."
+              // defaultValue="Write your content here.."
               fullWidth
-              id="email"
+              id="content"
+              name="content"
               label="Content"
-              name="email"
+              name="content"
               rows={8}
-              autoComplete="email"
+              // autoComplete="content"
               autoFocus
+              onChange={(text) => setContent(text.target.value)}
             />
 
             <div>Image</div>
@@ -112,21 +174,33 @@ export default function AddNews() {
             <input
               className="form-control"
               type="file"
-              onChange={(event) =>
-                this.setState({ profileimage: event.target.files })
-              }
+              name="image"
+              // onChange={(event) =>
+              //   this.setState({ profileimage: event.target.files })
+              // }
+              onClick={(e) => {
+                console.log(e);
+              }}
+              onChange={(e) => fileHandler(e)}
               placeholder="Upload Image"
             />
 
-            <Button
+            {/* <Button
               type="submit"
               fullWidth
               variant="contained"
               color="primary"
-              className={classes.submit}
+              onClick={() => {
+                addNews();
+                // console.log("here");
+              }}
+              // className={classes.submit}
             >
               Add News
-            </Button>
+            </Button> */}
+            <a href="#" onClick={() => addNews()}>
+              Submit
+            </a>
           </form>
         </div>
       </Grid>
