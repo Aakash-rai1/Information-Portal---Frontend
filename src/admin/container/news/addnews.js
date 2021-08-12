@@ -45,25 +45,38 @@ const useStyles = makeStyles((theme) => ({
 
 export default function AddNews() {
   const classes = useStyles();
-  const [value, setValue] = React.useState("Controlled");
+  const [image, setImage] = React.useState("");
+  const [content, setContent] = React.useState("");
+  const [title, setTitle] = React.useState("");
 
-  // const sendprofilepic = () => {
-  //   let formdata = new FormData();
-  //   formdata.append("image", this.state.profileimage[0]);
-  //   console.log(this.state.profileimage[0]);
-  //   axios
-  //     .put(
-  //       "http://localhost:2020/admin/addnews" + this.state.user._id,
-  //       formdata,
-  //       this.state.config
-  //     )
-  //     .then(function () {
-  //       window.location.reload();
-  //     });
-  // };
+  const fileHandler = (e) => {
+    setImage(e.target.files[0]);
+  };
+  const inputHandler = (e) => {
+    // this.setState({
+    //     [e.target.name] : e.target.value
+    // })
+  };
 
-  const handleChange = (event) => {
-    setValue(event.target.value);
+  console.log(title);
+  console.log(content);
+
+  const addNews = (e) => {
+    // e.preventDefault();
+    const data = new FormData();
+    data.append("title", title);
+    data.append("content", content);
+    data.append("image", image);
+
+    axios
+      .post("http://localhost:2020/admin/addnews", data)
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((err) => {
+        console.log(err.response);
+      });
+    console.log(data);
   };
 
   return (
@@ -84,12 +97,14 @@ export default function AddNews() {
               placeholder="Enter Your Title"
               helperText="Title must not be empty"
               fullWidth
+              name="title"
               margin="normal"
               InputLabelProps={{
                 shrink: true,
               }}
               variant="filled"
               required
+              onChange={(text) => setTitle(text.target.value)}
             />
 
             <TextField
@@ -97,14 +112,16 @@ export default function AddNews() {
               margin="normal"
               required
               multiline
-              defaultValue="Write your content here.."
+              // defaultValue="Write your content here.."
               fullWidth
-              id="email"
+              id="content"
+              name="content"
               label="Content"
-              name="email"
+              name="content"
               rows={8}
-              autoComplete="email"
+              // autoComplete="content"
               autoFocus
+              onChange={(text) => setContent(text.target.value)}
             />
 
             <div>Image</div>
@@ -112,18 +129,40 @@ export default function AddNews() {
             <input
               className="form-control"
               type="file"
-              onChange={(event) =>
-                this.setState({ profileimage: event.target.files })
-              }
+              name="image"
+              // onChange={(event) =>
+              //   this.setState({ profileimage: event.target.files })
+              // }
+              onClick={(e) => {
+                console.log(e);
+              }}
+              onChange={(e) => fileHandler(e)}
               placeholder="Upload Image"
             />
 
+            {/* <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              onClick={() => {
+                addNews();
+                // console.log("here");
+              }}
+              // className={classes.submit}
+            >
+              Add News
+            </Button> */}
+            {/* <a href="#" onClick={() => addNews()}>
+              Submit
+            </a> */}
             <Button
               type="submit"
               fullWidth
               variant="contained"
               color="primary"
               className={classes.submit}
+              onClick={() => addNews()}
             >
               Add News
             </Button>
