@@ -1,13 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
-import CardActionArea from "@material-ui/core/CardActionArea";
-import Typography from "@material-ui/core/Typography";
-import CardMedia from "@material-ui/core/CardMedia";
+
 import Button from "@material-ui/core/Button";
 import axios from "axios";
-import { format, render, cancel, register } from "timeago.js";
+// import { format, render, cancel, register } from "timeago.js";
 
 import { Grid } from "@material-ui/core";
 
@@ -103,7 +99,7 @@ export default function Newscard() {
               <ReadMore>{news.content}</ReadMore>
               <p class="card-text">
                 <small class="text-muted">
-                  Last updated {format(new Date(news.updatedAt))}
+                  {/* Last updated {format(new Date(news.updatedAt))} */}
                 </small>
               </p>
             </div>

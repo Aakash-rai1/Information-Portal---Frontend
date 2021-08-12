@@ -45,7 +45,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function AddNews() {
   const classes = useStyles();
-  const [value, setValue] = React.useState("Controlled");
   const [image, setImage] = React.useState("");
   const [content, setContent] = React.useState("");
   const [title, setTitle] = React.useState("");
@@ -60,51 +59,7 @@ export default function AddNews() {
   };
 
   console.log(title);
-  // const addnews = () => {
-  //   var axios = require("axios");
-  //   var FormData = require("form-data");
-  //   var fs = require("fs");
-  //   var data = new FormData();
-  //   data.append("title", title);
-  //   data.append("content", content);
-
-  //   var config = {
-  //     method: "post",
-  //     url: "http://localhost:2020/admin/addnews",
-  //     headers: {
-  //       ...data.getHeaders(),
-  //     },
-  //     data: data,
-  //   };
-
-  //   data.append("image", fs.createReadStream(image));
-  //   axios(config)
-  //     .then(function (response) {
-  //       console.log(JSON.stringify(response.data));
-  //     })
-  //     .catch(function (error) {
-  //       console.log(error);
-  //     });
-  // };
-  // console.log(image);
-  // const sendprofilepic = () => {
-  //   let formdata = new FormData();
-  //   formdata.append("image", this.state.profileimage[0]);
-  //   console.log(this.state.profileimage[0]);
-  //   axios
-  //     .put(
-  //       "http://localhost:2020/admin/addnews" + this.state.user._id,
-  //       formdata,
-  //       this.state.config
-  //     )
-  //     .then(function () {
-  //       window.location.reload();
-  //     });
-  // };
-
-  const handleChange = (event) => {
-    setValue(event.target.value);
-  };
+  console.log(content);
 
   const addNews = (e) => {
     // e.preventDefault();
@@ -198,9 +153,19 @@ export default function AddNews() {
             >
               Add News
             </Button> */}
-            <a href="#" onClick={() => addNews()}>
+            {/* <a href="#" onClick={() => addNews()}>
               Submit
-            </a>
+            </a> */}
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              className={classes.submit}
+              onClick={() => addNews()}
+            >
+              Add News
+            </Button>
           </form>
         </div>
       </Grid>

@@ -12,6 +12,7 @@ import Grid from "@material-ui/core/Grid";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
+import axios from "axios";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -49,6 +50,31 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignupForm() {
   const classes = useStyles();
+  const [fname, setFname] = React.useState("");
+  const [lname, setLname] = React.useState("");
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
+
+  console.log(fname);
+  console.log(lname);
+
+  const register = (e) => {
+    const data = new FormData();
+    data.append("fname", fname);
+    data.append("lname", lname);
+    data.append("email", email);
+    data.append("password", password);
+
+    axios
+      .post("http://localhost:2020/register", data)
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((err) => {
+        console.log(err.response);
+      });
+    console.log(data);
+  };
 
   return (
     <Grid container component="main" className={classes.root}>
@@ -71,8 +97,8 @@ export default function SignupForm() {
               id="fname"
               label="First Name"
               name="fname"
-              autoComplete="fname"
               autoFocus
+              onChange={(text) => setFname(text.target.value)}
             />
             <TextField
               variant="outlined"
@@ -82,8 +108,8 @@ export default function SignupForm() {
               id="lname"
               label="Last Name"
               name="lname"
-              autoComplete="lname"
               autoFocus
+              onChange={(text) => setLname(text.target.value)}
             />
             <TextField
               variant="outlined"
@@ -93,19 +119,19 @@ export default function SignupForm() {
               id="email"
               label="Email Address"
               name="email"
-              autoComplete="email"
               autoFocus
+              onChange={(text) => setEmail(text.target.value)}
             />
             <TextField
               variant="outlined"
               margin="normal"
               required
               fullWidth
+              id="password"
               name="password"
               label="Password"
               type="password"
-              id="password"
-              autoComplete="current-password"
+              onChange={(text) => setPassword(text.target.value)}
             />
 
             <Button
@@ -114,6 +140,7 @@ export default function SignupForm() {
               variant="contained"
               color="primary"
               className={classes.submit}
+              onClick={() => register()}
             >
               Register Account
             </Button>

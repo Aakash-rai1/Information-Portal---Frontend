@@ -75,7 +75,17 @@ export default function AddEvents() {
               variant="filled"
               required
             />
-
+            <TextField
+              xs={12}
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              id="location"
+              label="Location"
+              name="location"
+              autoFocus
+            />
             <TextField
               xs={12}
               variant="outlined"
@@ -84,9 +94,9 @@ export default function AddEvents() {
               multiline
               defaultValue="Write your content here.."
               fullWidth
-              id="email"
+              id="content"
               label="Content"
-              name="email"
+              name="content"
               rows={8}
               autoComplete="email"
               autoFocus
