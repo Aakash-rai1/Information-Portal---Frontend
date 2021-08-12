@@ -58,22 +58,38 @@ export default function SignupForm() {
   console.log(fname);
   console.log(lname);
 
-  const register = (e) => {
-    const data = new FormData();
-    data.append("fname", fname);
-    data.append("lname", lname);
-    data.append("email", email);
-    data.append("password", password);
+  const register = () => {
+    const data = JSON.stringify({
+      fname: fname,
+      lname: lname,
+      email: email,
+      password: password,
+    });
 
-    axios
-      .post("http://localhost:2020/register", data)
-      .then((response) => {
-        console.log(response.data);
+    //   axios
+    //     .post("http://localhost:2020/register", data)
+    //     .then((response) => {
+    //       console.log(response.data);
+    //     })
+    //     .catch((err) => {
+    //       console.log(err.response);
+    //     });
+    //   console.log(data);
+    // };
+    axios({
+      method: "POST",
+      url: "http://localhost:2020/register",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: data,
+    })
+      .then((res) => {
+        console.log(res.data);
       })
       .catch((err) => {
-        console.log(err.response);
+        console.log(err);
       });
-    console.log(data);
   };
 
   return (
@@ -144,6 +160,10 @@ export default function SignupForm() {
             >
               Register Account
             </Button>
+
+            {/* <a href="#" onClick={() => register()}>
+              submit
+            </a> */}
           </form>
         </div>
       </Grid>

@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 import Button from "@material-ui/core/Button";
 import axios from "axios";
-// import { format, render, cancel, register } from "timeago.js";
+import { format, render, cancel, register } from "timeago.js";
 
 import { Grid } from "@material-ui/core";
 
@@ -99,7 +99,7 @@ export default function Newscard() {
               <ReadMore>{news.content}</ReadMore>
               <p class="card-text">
                 <small class="text-muted">
-                  {/* Last updated {format(new Date(news.updatedAt))} */}
+                  Last updated {format(new Date(news.updatedAt))}
                 </small>
               </p>
             </div>
