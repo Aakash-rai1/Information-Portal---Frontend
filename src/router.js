@@ -21,6 +21,7 @@ import AddEvents from "./admin/container/events/addevents";
 import ManageResults from "./admin/container/result/manageresult";
 import AddResults from "./admin/container/result/makeresult";
 import AdminProfile from "./admin/container/profile";
+import { Result } from "./container/Result";
 
 class Router extends Component {
   render() {
@@ -32,6 +33,7 @@ class Router extends Component {
             <Route path="/home" component={Home} />
             <Route path="/events" component={Events} />
             <Route path="/news" component={News} />
+            <Route path="/result" component={Result} />
 
             <Route path="/adminlogin" component={AdminLogin} />
             <Route path="/dashboard" component={Dashboard} />

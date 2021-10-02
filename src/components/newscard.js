@@ -85,7 +85,7 @@ export default function Newscard() {
 
   return (
     <>
-      {news.map((news, index) => (
+      {/* {news.map((news, index) => (
         <div class="col-md-4">
           <div class="card ">
             <img
@@ -105,29 +105,39 @@ export default function Newscard() {
             </div>
           </div>
         </div>
-      ))}
+      ))} */}
+      <section class="course_section layout_padding-bottom">
+        <div class="container">
+          <div class="heading_container">
+            <h3 style={{ marginTop: "20px" }}>News & Announcements</h3>
+            <p>
+              It is a long established fact that a reader will be distracted
+            </p>
+          </div>
+          <div class="course_container">
+            <div class="course_content">
+              {news.map((news, index) => (
+                <div class="box">
+                  <img
+                    src={`http://localhost:2020/image/post/${news.image}`}
+                    alt=""
+                  />
+                  <a href="" class="">
+                    <img src="images/link.png" alt="" />
+                  </a>
+                  <h5>
+                    {news.title} <br />
+                    {news.content}
+                  </h5>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div class="btn-box">
+            <a href="">Read More</a>
+          </div>
+        </div>
+      </section>
     </>
-
-    // <Grid item>
-    //   <Card className={classes.root}>
-    //     {news.map((news, index) => (
-    //       <CardActionArea>
-    //         <CardContent>
-    //           <Typography variant="h5" component="h2">
-    //             {news.title}
-    //           </Typography>
-    //           <CardMedia
-    //             className={classes.media}
-    //             image={`http://localhost:2020/image/post/${news.image}`}
-    //             title="Paella dish"
-    //           />
-    //           <Typography variant="body2" color="textSecondary" component="p">
-    //             <ReadMore>{news.content}</ReadMore>
-    //           </Typography>
-    //         </CardContent>
-    //       </CardActionArea>
-    //     ))}
-    //   </Card>
-    // </Grid>
   );
 }

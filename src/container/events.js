@@ -29,17 +29,12 @@ export default function Events() {
   const classes = useStyles();
 
   return (
-    <div>
-      <Header />
-      <div className={classes.container} justifyContent="center">
-        <div className={classes.header}>
-          <h3>Events</h3>
-        </div>
-
-        <div class="row">
-          <Eventscard />
-        </div>
+    <div className="sub_page">
+      <div class="hero_area">
+        <Header />
       </div>
+      <Eventscard />
+
       <Footer />
     </div>
   );

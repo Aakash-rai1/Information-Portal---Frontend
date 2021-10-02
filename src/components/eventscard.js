@@ -86,19 +86,35 @@ export default function Eventscard() {
 
   return (
     <>
-      {events.map((events, index) => (
-        <div class="col-md-4">
-          <div class="card ">
-            <div class="card-header">Date: {events.date}</div>
-            <div class="card-body">
-              <h5 class="card-title"> {events.title}</h5>
-              <h6 class="card-subtitle mb-2 text-muted">{events.location}</h6>
-              <hr />
-              <ReadMore>{events.content}</ReadMore>
-            </div>
+      <section class="event_section layout_padding">
+        <div class="container">
+          <div class="heading_container">
+            <h3>Events</h3>
+            <p>Upcoming Education Events to feed your brain.</p>
+          </div>
+          <div class="event_container">
+            {events.map((events, index) => (
+              <div class="box">
+                <div class="img-box">
+                  <img src="images/event-img.jpg" alt="" />
+                </div>
+                <div class="detail-box">
+                  <h4>{events.title}</h4>
+                  <h6>8:00 AM - 5:00 PM {events.location}</h6>
+                </div>
+                <div class="date-box">
+                  <h3>
+                    <span>{events.date}</span>
+                  </h3>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div class="btn-box">
+            <a href="">Read More</a>
           </div>
         </div>
-      ))}
+      </section>
     </>
 
     // <Grid item>

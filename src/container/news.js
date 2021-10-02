@@ -29,17 +29,17 @@ export default function News() {
   const classes = useStyles();
 
   return (
-    <div>
-      <Header />
-      <div className={classes.container} justifyContent="center">
-        <div className={classes.header}>
-          <h3>News & Announcements</h3>
-        </div>
-
-        <div class="row">
-          <Newscard />
-        </div>
+    <div className="sub_page">
+      <div class="hero_area">
+        <Header />
       </div>
+      {/* <div className={classes.container} justifyContent="center"> */}
+      {/* <div className={classes.header}>
+          <h3>News & Announcements</h3>
+        </div> */}
+
+      <Newscard />
+      {/* </div> */}
       <Footer />
     </div>
   );
